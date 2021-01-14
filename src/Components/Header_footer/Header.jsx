@@ -1,4 +1,5 @@
 import React from "react";
+import Slide from "react-reveal/Slide";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -162,27 +163,27 @@ const Header = () => {
         position="static"
         style={{
           backgroundColor: "#00809d",
-          //   backgroundImage: "linear-gradient(315deg, #36096d 0%, #37d5d6 74%)",
         }}>
         <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Users Profile Information
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+          <Slide left delay={1000}>
+            <Typography className={classes.title} variant="h6" noWrap>
+              Users Profile Information
+            </Typography>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ "aria-label": "search" }}
+              />
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
-          {/* <div className={classes.grow} /> */}
-          {/* <div className={classes.sectionDesktop}>
+            {/* <div className={classes.grow} /> */}
+            {/* <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <MailIcon />
@@ -203,7 +204,7 @@ const Header = () => {
               <AccountCircle />
             </IconButton>
           </div> */}
-          {/* <div className={classes.sectionMobile}>
+            {/* <div className={classes.sectionMobile}>
             <IconButton
               aria-label="show more"
               aria-controls={mobileMenuId}
@@ -213,6 +214,7 @@ const Header = () => {
               <MoreIcon />
             </IconButton>
           </div> */}
+          </Slide>
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
