@@ -13,16 +13,25 @@ const Card = ({ userInfo, loading }) => {
   if (loading) {
     return (
       <div style={{ color: "#00809d" }}>
-        <div class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white-700 opacity-75 flex flex-col items-center justify-center">
+        <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white-700 opacity-75 flex flex-col items-center justify-center">
           <img className="w-500 mx-auto" src={logo2} alt="logo2" />
-          <h2 class="text-center text-xl font-bold">Loading...</h2>
-          <p class="w-1/3 text-center font-semibold">
-            This may take a few seconds
-          </p>
+          <h2 className="text-center text-xl font-bold">Loading...</h2>
         </div>
       </div>
     );
   }
+
+  const selectGender = (gender, i) => {
+    let url = logo;
+
+    if (gender === "Male") {
+      url = `https://randomuser.me/api/portraits/men/${i}.jpg`;
+    } else if (gender === "Female") {
+      url = `https://randomuser.me/api/portraits/women/${i}.jpg`;
+    }
+
+    return url;
+  };
   return (
     <div>
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-5 gap-3">
@@ -31,14 +40,22 @@ const Card = ({ userInfo, loading }) => {
             <div className="flex flex-col items-center justify-center p-4 rounded-lg">
               <div className="max-w-sm rounded-lg overflow-hidden shadow-lg my-2 bg-white">
                 <div
-                  className="relative z-10"
+                  className="relative z-10 image-container"
                   style={{
                     clipPath:
                       "polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 3vw))",
                   }}>
-                  <img className="w-full" src={logo} alt="logo" />
+                  <img
+                    className="w-full w-100"
+                    src={selectGender(val.Gender, i)}
+                    style={{
+                      width: "400px",
+                      height: "420px",
+                    }}
+                    alt="logo"
+                  />
                   <div
-                    className="text-center absolute w-full"
+                    className="text-center absolute w-full after"
                     style={{ bottom: "4rem" }}>
                     <p className="text-white tracking-wide uppercase text-lg font-semibold">
                       {val.FirstName} {val.LastName}
@@ -46,7 +63,7 @@ const Card = ({ userInfo, loading }) => {
 
                     <p className="block mt-1 text-white text-sm leading-tight font-medium  hover:underline">
                       <span>
-                        <EmailIcon />{" "}
+                        <EmailIcon />
                       </span>
                       <span>email: </span>
                       {val.Email}
@@ -68,7 +85,7 @@ const Card = ({ userInfo, loading }) => {
                     className="block  text-sm leading-tight font-medium text-black hover:underline"
                     style={{ color: "#00809d" }}>
                     <span>
-                      <PermIdentityIcon />{" "}
+                      <PermIdentityIcon />
                     </span>
                     <span>Username: </span>
                     {val.UserName}
@@ -77,7 +94,7 @@ const Card = ({ userInfo, loading }) => {
                     className="block mt-1 text-sm leading-tight font-medium text-black hover:underline"
                     style={{ color: "#00809d" }}>
                     <span>
-                      <PhoneIcon />{" "}
+                      <PhoneIcon />
                     </span>
                     <span>Phone no: </span>
                     {val.PhoneNumber}
