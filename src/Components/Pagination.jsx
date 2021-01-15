@@ -7,16 +7,6 @@ const Pagination = ({ usersPerPage, totalUsers, paginate }) => {
   }
   return (
     <div>
-      {/* <ul className="pagination">
-        {pageNumbers.map((number) => (
-          <li key={number} className="page-item">
-            <a onClick={() => paginate(number)} href="!#" className="page-link">
-              {number}
-            </a>
-          </li>
-        ))}
-      </ul> */}
-
       <ul className="flex items-center justify-center mb-5">
         {pageNumbers.map((number) => (
           <li
