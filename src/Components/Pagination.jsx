@@ -1,4 +1,5 @@
 import React from "react";
+import Slide from "react-reveal/Slide";
 
 const Pagination = ({ usersPerPage, totalUsers, paginate }) => {
   const pageNumbers = [];
@@ -7,17 +8,24 @@ const Pagination = ({ usersPerPage, totalUsers, paginate }) => {
   }
   return (
     <div>
-      <ul className="flex items-center justify-center mb-5">
-        {pageNumbers.map((number) => (
-          <li
-            className="p-1 mr-3  rounded-full bg-blue-500 rounded-full h-8 w-8 text-white  flex items-center justify-center cursor-pointer hover:bg-blue-700"
-            key={number}>
-            <a onClick={() => paginate(number)} href="!#">
-              {number}
-            </a>
+      <Slide right delay={1000}>
+        <ul className="flex items-end justify-end mt-5">
+          <li>
+            <p className="p-1 mr-3 animate-ping font-semibold text-blue-300">
+              Page
+            </p>
           </li>
-        ))}
-      </ul>
+          {pageNumbers.map((number) => (
+            <li
+              className="p-1 mr-3  rounded-lg animate-bounce bg-blue-500 h-8 w-8 text-white  flex items-center justify-center cursor-pointer hover:bg-blue-700"
+              key={number}>
+              <a onClick={() => paginate(number)} href="!#">
+                {number}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Slide>
     </div>
   );
 };

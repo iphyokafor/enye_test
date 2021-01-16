@@ -34,12 +34,12 @@ const App = () => {
   return (
     <div className="bg-gray-100">
       <Header />
-      <Card userInfo={currentUsersInfo} loading={loading} />
       <Pagination
         usersPerPage={usersPerPage}
         totalUsers={userInfo.length}
         paginate={paginate}
       />
+      <Card userInfo={currentUsersInfo} loading={loading} />
     </div>
   );
 };
