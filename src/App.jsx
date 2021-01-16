@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       setLoading(true);
-      const res = await axios.get("http://api.enye.tech/v1/challenge/records");
+      const res = await axios.get("https://api.enye.tech/v1/challenge/records");
       console.log("res", res);
       console.log("res", res.data.records.profiles);
       setUserInfo(res.data.records.profiles);
